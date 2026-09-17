@@ -6,14 +6,18 @@
     <title>Undangan Pernikahan Elegan</title>
     <meta name="description" content="Undangan pernikahan Romeo & Juliet, 25 Oktober 2026.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://domain-undangan-kamu.com/">
     <meta property="og:title" content="Romeo & Juliet | Undangan Pernikahan">
     <meta property="og:description" content="Dengan penuh kebahagiaan, kami mengundang Anda untuk hadir di pernikahan Romeo & Juliet pada 25 Oktober 2026.">
-    <meta property="og:image" content="images/bg Hero.jpg">
+    <meta property="og:image" content="https://domain-undangan-kamu.com/images/foto-mempelai.jpg">
     <meta property="og:image:alt" content="Undangan pernikahan Romeo dan Juliet">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Romeo & Juliet | Undangan Pernikahan">
     <meta name="twitter:description" content="Undangan pernikahan Romeo & Juliet, 25 Oktober 2026.">
-    <meta name="twitter:image" content="images/bg Hero.jpg">
+    <meta name="twitter:image" content="https://domain-undangan-kamu.com/images/foto-mempelai.jpg">
     
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -78,18 +82,41 @@
         #cover > .welcome-recipient {
             color: var(--text-dark) !important;
             background: rgba(255, 255, 255, 0.7);
-            padding: 7px 16px;
-            border-radius: 999px;
+            max-width: 420px;
+            padding: 10px 18px;
+            border: 1px solid rgba(127, 29, 45, 0.14);
+            border-radius: 14px;
+            font-family: var(--font-serif);
+            font-size: 1rem !important;
+            font-style: italic;
+            line-height: 1.5;
             box-shadow: 0 5px 18px rgba(52, 70, 59, 0.08);
         }
+        .recipient-label,
+        .recipient-message {
+            display: block;
+        }
+        .recipient-label {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-style: normal;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        .recipient-message {
+            font-size: 0.98rem;
+        }
         #cover > #guest-name {
-            color: var(--primary);
-            background: rgba(255, 255, 255, 0.86);
-            border: 1px solid rgba(127, 29, 45, 0.22);
+            display: inline-block;
+            color: #431923 !important;
+            background: #ffffff !important;
+            border: 2px solid #7f1d2d;
             border-radius: 10px;
-            padding: 8px 18px;
+            padding: 9px 22px;
+            font-size: 1.25rem;
+            font-weight: 700;
             text-shadow: none;
-            box-shadow: 0 4px 16px rgba(67, 25, 35, 0.12);
+            box-shadow: 0 4px 16px rgba(67, 25, 35, 0.2);
         }
         #cover.open { transform: translateY(-100%); }
 
@@ -347,10 +374,9 @@
 
     <!-- COVER -->
     <div id="cover">
-        <img src="https://cdntemplate.wedding/assets/img/ornament-top-left.png" class="floral-ornament top-left" alt="floral" style="display:none;" onload="this.style.display='block'">
         <p class="title-serif" style="font-size: 0.8rem; color: var(--accent);">THE WEDDING OF</p>
         <h1 class="title-script" style="margin: 15px 0;">Romeo & Juliet</h1>
-        <p class="welcome-recipient" style="font-size: 0.85rem; margin-top: 20px;">Kepada Yth. Bapak/Ibu/Saudara/i</p>
+        <p class="welcome-recipient" style="margin-top: 20px;"><span class="recipient-label">Kepada Yth. Bapak/Ibu/Saudara/i</span><span class="recipient-message">Tanpa mengurangi rasa hormat, kami mengundang Anda untuk hadir di hari bahagia kami.</span></p>
         <h3 class="title-serif" style="margin: 8px 0 20px;" id="guest-name">Tamu Undangan</h3>
         <button class="btn-custom" onclick="openInvitation()"><i class="fas fa-envelope-open" style="margin-right: 8px;"></i> Buka Undangan</button>
     </div>
