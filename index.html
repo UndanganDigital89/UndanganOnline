@@ -825,7 +825,7 @@
             />
           </div>
           <div>
-            <span class="couple-label text-[10px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-full">The Groom</span>
+            <span class="couple-label text-[10px] font-bold tracking-widest px-2.5 py-0.5 rounded-full">@ahmadgend_</span>
             <h3 class="font-serif text-2xl text-stone-900 mt-2 font-medium">Ahmad</h3>
             <p class="couple-parents mt-1">
               Putra Pertama dari<br>Bpk. Supianor & Ibu Kartasiah
@@ -845,7 +845,7 @@
             />
           </div>
           <div>
-            <span class="couple-label text-[10px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-full">The Bride</span>
+            <span class="couple-label text-[10px] font-bold tracking-widest px-2.5 py-0.5 rounded-full">@norjanahhh__</span>
             <h3 class="font-serif text-2xl text-stone-900 mt-2 font-medium">Norjanah</h3>
             <p class="couple-parents mt-1">
               Putri terakhir dari<br>Bpk. Ahmad Suwandi & Ibu Karlina
@@ -884,7 +884,7 @@
             <p class="text-xs text-stone-500 font-medium mt-0.5">08.00 – Selesai</p>
             <hr class="my-4 border-stone-200/60" />
             <p class="text-xs font-semibold text-stone-800">Rumah Mempelai Wanita</p>
-            <p class="text-[11px] text-stone-500 mt-0.5">Desa Nateh</p>
+            <p class="text-[11px] text-stone-500 mt-0.5">Jln.kesatria desa Nateh Rt.07 Rw.03 Kec.Batang alai timur Keb.Hulu sungai tengah</p>
             <a href="https://maps.app.goo.gl/XoweDd2nZHH1A97k8?g_st=ac" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-[11px] font-semibold border border-stone-300 px-4 py-2 rounded-full hover:bg-stone-900 hover:text-white transition-all">
               📍 Buka Google Maps
             </a>
@@ -1063,13 +1063,27 @@
     updateCountdown();
 
     const parallaxBackgrounds = document.querySelectorAll('.verse-background, .agenda-background');
+    const parallaxSections = [];
     let parallaxFrame = null;
-    function updateParallaxBackgrounds() {
-      parallaxFrame = null;
+    function measureParallaxBackgrounds() {
+      parallaxSections.length = 0;
       parallaxBackgrounds.forEach((background) => {
         const rect = background.getBoundingClientRect();
-        const offset = (window.innerHeight / 2 - rect.top - rect.height / 2) * 0.35;
-        background.style.setProperty('--parallax-offset', `${offset}px`);
+        parallaxSections.push({
+          element: background,
+          top: rect.top + window.scrollY,
+          height: rect.height
+        });
+      });
+      requestParallaxUpdate();
+    }
+    function updateParallaxBackgrounds() {
+      parallaxFrame = null;
+      const viewportCenter = window.scrollY + window.innerHeight / 2;
+      parallaxSections.forEach(({ element, top, height }) => {
+        const sectionCenter = top + height / 2;
+        const offset = (viewportCenter - sectionCenter) * 0.2;
+        element.style.setProperty('--parallax-offset', `${offset}px`);
       });
     }
     function requestParallaxUpdate() {
@@ -1078,8 +1092,8 @@
       }
     }
     window.addEventListener('scroll', requestParallaxUpdate, { passive: true });
-    window.addEventListener('resize', requestParallaxUpdate);
-    requestParallaxUpdate();
+    window.addEventListener('resize', measureParallaxBackgrounds);
+    measureParallaxBackgrounds();
 
     // 3. Scroll progress and gentle section reveals
     const revealItems = document.querySelectorAll('.reveal');
